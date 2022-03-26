@@ -1,109 +1,45 @@
-# ssweb-api
+# ssweb-Rest-API
 `Package ssweb API with puppeteer and google chrome`
 
-# Note
-ID</br>
-Jika Ada Bug, Silahkan Buat [Issues](https://github.com/Caliph91/ssweb-api/issues/new)
+## Usage for ssweb
 
-EN</br>
-If there are bugs, please create [Issues](https://github.com/Caliph91/ssweb-api/issues/new)
+You can use paramenter of `desktop` And `handpone`
 
+`https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}`
 
-# Installation
+Response result on json
 
-## Latest
-`npm i github:caliph91/ssweb-api`
-
-## Npm 
-`npm i ssweb-api`
-
-
-# Require
-```js
-const api = require("ssweb-api")
-```
-
-
-# Docs
-
-## Ssweb Desktop
-```js
-(async () => {
-var result = await api.desktop({ url: 'https://google.co.id' })
-console.log(result)
-})()
-```
-
-### Result 
-<img src="https://telegra.ph/file/221e5fd399fbc8c9696b2.png"></img>
-
-### Result JSON
-```js
+``` json
 {
-  status: 200,
-  creator: 'Caliph',
-  result: 'https://uploader.caliph.my.id/file/1TPWtb5XqO.png'
+    "status": 200,
+    "creator": "Cakrayp & Caliph",
+    "message": "You can add paramenter of 'responsetype=image' to image response",
+    "result": {
+        "originalname": "e9f9f92dad.png",
+        "encoding": "7bit",
+        "mimetype": "image/png",
+        "size": "72.15 KB",
+        "url": "https://uploader.caliph.my.id/file/zaku7M75ok.png"
+    }
 }
 ```
 
-## Ssweb Desktop (Full Page)
-```js
-(async () => {
-var result = await api.desktop({ url: 'https://google.co.id/search?q=Caliph%20Rest%20Api', fullpage: true })
-console.log(result)
-})()
-```
+if you want to use images response, you can add paramenter of `responsetype=image`
 
-### Result 
-<img src="https://telegra.ph/file/a661907259df2d35ebd3c.png"></img>
+`https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}`
 
-### Result JSON
-```js
-{
-  status: 200,
-  creator: 'Caliph',
-  result: 'https://uploader.caliph.my.id/file/KgDwrs8WHh.png'
-}
-```
+- Response result on image for desktop
 
-## Ssweb Handphone 
-```js
-(async () => {
-var result = await api.handphone({ url: 'https://google.co.id' })
-console.log(result)
-})()
-```
+<p align="center">
+<img src="https://telegra.ph/file/221e5fd399fbc8c9696b2.png" width="auto" height="350"/>
+</p>
 
-### Result 
-<img src="https://telegra.ph/file/517b8219ca53433c73b40.png"></img>
+- Response result on image for handphone
 
-### Result JSON
-```js
-{
-  status: 200,
-  creator: 'Caliph',
-  result: 'https://uploader.caliph.my.id/file/scd2djBxkG.png'
-}
-```
+<p align="center">
+<img src="https://telegra.ph/file/517b8219ca53433c73b40.png" width="auto" height="450"/>
+</p>
+## Creator
 
-## Ssweb Handphone (Full Page)
-```js
-(async () => {
-var result = await api.handphone({ url: 'https://google.co.id/search?q=Caliph%20Rest%20Api', fullpage: true })
-console.log(result)
-})()
-```
-
-### Result 
-<img src="https://uploader.caliph.my.id/file/GSXWUwB3nJ.png"></img>
-
-### Result JSON
-```js
-{
-  status: 200,
-  creator: 'Caliph',
-  result: 'https://uploader.caliph.my.id/file/wxP42avOdq.png'
-}
-```
-
-
+- Sourde code [Caliph](https://github.com/Caliph91)
+- Credit by [Cakrayp (Me)](https://github.com/cakrayp)
