@@ -2,8 +2,7 @@
 `Package ssweb API with puppeteer and google chrome`
 
 # Heroku Deployments
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cakrayp/ssweb-api-caliph.git)
 
 ### Heroku Buildpacks
 
