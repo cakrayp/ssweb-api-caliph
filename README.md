@@ -11,7 +11,7 @@
 
 # Usage for ssweb API
 
-You can use paramenter of `desktop` And `handpone`
+You can use paramenter of `desktop` And `handphone`
 
 `https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}`
 
