@@ -20,7 +20,8 @@ const createStream = (binary) => {
 
 
 app.get('/', async (req, res) => {
-    res.send("<code>Hello welcome to my Rest API, I was created server for web screenshot from source code</code>")
+    const link_github = "https://github.com/cakrayp/ssweb-api-caliph.git"
+    res.send("<code>Hello welcome to my Rest API, I was created server for web screenshot from source code, Please visit here <a href=" + link_github + ">" + link_github + "</a></code>")
 })
 
 
