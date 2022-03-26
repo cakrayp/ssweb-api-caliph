@@ -1,7 +1,16 @@
 # ssweb-Rest-API
 `Package ssweb API with puppeteer and google chrome`
 
-## Usage for ssweb
+# Heroku Deployments
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+### Heroku Buildpacks
+
+- heroku/nodejs (nodejs application)
+- https://github.com/jontewks/puppeteer-heroku-buildpack.git
+
+## Usage for ssweb API
 
 You can use paramenter of `desktop` And `handpone`
 
@@ -39,6 +48,7 @@ if you want to use images response, you can add paramenter of `responsetype=imag
 <p align="center">
 <img src="https://telegra.ph/file/517b8219ca53433c73b40.png" width="auto" height="450"/>
 </p>
+
 ## Creator
 
 - Sourde code [Caliph](https://github.com/Caliph91)
