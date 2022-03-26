@@ -1,4 +1,4 @@
-# ssweb-Rest-API
+# Ssweb-Rest-API
 `Package ssweb API with puppeteer and google chrome`
 
 # Heroku Deployments
@@ -10,7 +10,7 @@
 - heroku/nodejs (nodejs application)
 - https://github.com/jontewks/puppeteer-heroku-buildpack.git
 
-## Usage for ssweb API
+# Usage for ssweb API
 
 You can use paramenter of `desktop` And `handpone`
 
