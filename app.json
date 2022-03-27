@@ -1,19 +1,12 @@
 {
-  "name": "ssweb with puppeteer",
+  "name": "webscreen with puppeteer",
   "description": "web screen for all devices with nodejs",
   "repository": "https://github.com/cakrayp/ssweb-api-caliph",
   "logo": "https://node-js-sample.herokuapp.com/node.png",
-  "keywords": [
-    "node",
-    "express",
-    "puppeteer"
-  ]
+  "keywords": ["node", "express", "puppeteer"]
   "buildpacks": [
     {
       "url": "https://github.com/jontewks/puppeteer-heroku-buildpack"
-    },
-    {
-      "url": "heroku/node"
     }
   ],
 }
