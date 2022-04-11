@@ -16,7 +16,12 @@ const createStream = (binary) => {
         }
     });
 }
+// check URL...
+const isUrl = (uri) => {
+    return uri.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
+}
 
+app.set("json spaces", 4)
 
 
 app.get('/', async (req, res) => {
@@ -33,18 +38,26 @@ app.get('/ssweb/desktop', async (req, res) => {
 
     ssweb.desktop({ url })
         .then(async (buff) => {
-            if (/^image(s|)$/.test(responsetype)) {
-                createStream(buff).pipe(res)
-            } else {
-                uploadFileFromCaliph(buff)
-                    .then(result => {
-                        res.json({
-                            status: 200,
-                            creator: "Cakrayp & Caliph",
-                            message: "You can add paramenter of 'responsetype=image' to image response",
-                            result
+            if (isUrl(url)) {
+                if (/^image(s|)$/.test(responsetype)) {
+                    createStream(buff).pipe(res)
+                } else {
+                    uploadFileFromCaliph(buff)
+                        .then(result => {
+                            res.json({
+                                status: 200,
+                                creator: "Cakrayp & Caliph",
+                                message: "You can add paramenter of 'responsetype=image' to image response",
+                                result
+                            })
                         })
-                    })
+                }
+            } else {
+                res.json({
+                    status: 200,
+                    creator: "Cakrayp & Caliph",
+                    message: "this is specific to url."
+                })
             }
         })
 })
