@@ -22,7 +22,10 @@ const isUrl = (uri) => {
 }
 
 app.set("json spaces", 4)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
 
 app.get('/', async (req, res) => {
     const link_github = "https://github.com/cakrayp/ssweb-api-caliph.git";
@@ -54,7 +57,11 @@ app.get('/ssweb/desktop', async (req, res) => {
                 }
             } else {
                 res.json({
+<<<<<<< HEAD
                     status: 200,
+=======
+                    status: 403,
+>>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
                     creator: "Cakrayp & Caliph",
                     message: "this is specific to url."
                 })
@@ -71,18 +78,26 @@ app.get('/ssweb/handphone', async (req, res) => {
 
     ssweb.handphone({ url })
         .then(async (buff) => {
-            if (/^image(s|)$/.test(responsetype)) {
-                createStream(buff).pipe(res)
-            } else {
-                uploadFileFromCaliph(buff)
-                    .then(result => {
-                        res.json({
-                            status: 200,
-                            creator: "Cakrayp & Caliph",
-                            message: "You can add paramenter of 'responsetype=image' to image response",
-                            result
+            if (isUrl(url)) {
+                if (/^image(s|)$/.test(responsetype)) {
+                    createStream(buff).pipe(res)
+                } else {
+                    uploadFileFromCaliph(buff)
+                        .then(result => {
+                            res.json({
+                                status: 200,
+                                creator: "Cakrayp & Caliph",
+                                message: "You can add paramenter of 'responsetype=image' to image response",
+                                result
+                            })
                         })
-                    })
+                }
+            } else {
+                res.json({
+                    status: 403,
+                    creator: "Cakrayp & Caliph",
+                    message: "this is specific to url."
+                })
             }
         })
 })

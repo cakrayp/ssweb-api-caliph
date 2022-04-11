@@ -3,6 +3,16 @@
 
 # Heroku Deployments
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cakrayp/ssweb-api-caliph)
+<<<<<<< HEAD
+
+### Heroku Buildpacks
+
+- heroku/nodejs (nodejs application)
+- https://github.com/jontewks/puppeteer-heroku-buildpack.git
+
+# Usage for ssweb API
+=======
+>>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
 
 ### Heroku Buildpacks
 
@@ -11,7 +21,7 @@
 
 # Usage for ssweb API
 
-You can use paramenter of `desktop` And `handpone`
+You can use paramenter of `desktop` And `handphone`
 
 `https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}`
 
