@@ -7,7 +7,7 @@ const uploadFileFromCaliph = require('./lib/uploadFile');
 const { author } = require('./index');
 
 
-// Buffer tu stream...
+// Buffer to stream...
 const createStream = (binary) => {
     return new stream.Readable({
         read() {
@@ -16,16 +16,14 @@ const createStream = (binary) => {
         }
     });
 }
+
 // check URL...
-const isUrl = (uri) => {
-    return uri.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
+const isUrl = (URL) => {
+    return URL.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
 }
 
 app.set("json spaces", 4)
-<<<<<<< HEAD
 
-=======
->>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
 
 app.get('/', async (req, res) => {
     const link_github = "https://github.com/cakrayp/ssweb-api-caliph.git";
@@ -37,11 +35,10 @@ app.get('/ssweb/desktop', async (req, res) => {
     var url = req.query.url,
         responsetype = req.query.responsetype
 
-    if (!url) return res.json({ status: false, creator: "Cakrayp & Caliph", message: "please enter URL for web screenshot" })
-
-    ssweb.desktop({ url })
-        .then(async (buff) => {
-            if (isUrl(url)) {
+    if (!url) return res.json({ status: 204, creator: "Cakrayp & Caliph", message: "please enter URL for web screenshot" })
+    if (isUrl(url) && url.match(/http(?:s):\/\//)) {
+        ssweb.desktop({ url })
+            .then(async (buff) => {
                 if (/^image(s|)$/.test(responsetype)) {
                     createStream(buff).pipe(res)
                 } else {
@@ -55,18 +52,14 @@ app.get('/ssweb/desktop', async (req, res) => {
                             })
                         })
                 }
-            } else {
-                res.json({
-<<<<<<< HEAD
-                    status: 200,
-=======
-                    status: 403,
->>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
-                    creator: "Cakrayp & Caliph",
-                    message: "this is specific to url."
-                })
-            }
+            })
+    } else {
+        res.json({
+            status: 202,
+            creator: "Cakrayp & Caliph",
+            message: "this is specific to url."
         })
+    }
 })
 
 
@@ -74,11 +67,10 @@ app.get('/ssweb/handphone', async (req, res) => {
     var url = req.query.url,
         responsetype = req.query.responsetype
 
-    if (!url) return res.json({ status: false, creator: "Cakrayp & Caliph", message: "please enter URL for web screenshot" })
-
-    ssweb.handphone({ url })
-        .then(async (buff) => {
-            if (isUrl(url)) {
+    if (!url) return res.json({ status: 204, creator: "Cakrayp & Caliph", message: "please enter URL for web screenshot" })
+    if (isUrl(url) && url.match(/http(?:s):\/\//)) {
+        ssweb.handphone({ url })
+            .then(async (buff) => {
                 if (/^image(s|)$/.test(responsetype)) {
                     createStream(buff).pipe(res)
                 } else {
@@ -92,14 +84,14 @@ app.get('/ssweb/handphone', async (req, res) => {
                             })
                         })
                 }
-            } else {
-                res.json({
-                    status: 403,
-                    creator: "Cakrayp & Caliph",
-                    message: "this is specific to url."
-                })
-            }
+            })
+    } else {
+        res.json({
+            status: 202,
+            creator: "Cakrayp & Caliph",
+            message: "this is specific to url."
         })
+    }
 })
 
 
