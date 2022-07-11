@@ -24,22 +24,21 @@ WORKDIR /webapp
 COPY package.json /webapp
 RUN pwd
 RUN ls
-RUN npm i puppeteer \
+RUN npm install puppeteer \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
     && mkdir -p /home/pptruser/Downloads \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /node_modules \
-    && chown -R pptruser:pptruser /package.json \
-    && chown -R pptruser:pptruser /package-lock.json
+    && chown -R pptruser:pptruser /webapp/node_modules \
+    && chown -R pptruser:pptruser /webapp/package.json \
+    && chown -R pptruser:pptruser /webapp/package-lock.json
 
 
 # Puppeteer v13.5.0 works with Chromium 100.
 COPY . /webapp
-RUN chown -R nodejs:nodejs /webapp
-RUN yarn add puppeteer@13.5.0
+# RUN yarn add puppeteer@13.5.0
 
-USER nodejs
+USER pptruser
 
 CMD [ "node", "server.js" ]
