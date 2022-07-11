@@ -3,21 +3,20 @@
 
 # Heroku Deployments
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cakrayp/ssweb-api-caliph)
-<<<<<<< HEAD
 
 ### Heroku Buildpacks
 
 - heroku/nodejs (nodejs application)
 - https://github.com/jontewks/puppeteer-heroku-buildpack.git
 
-# Usage for ssweb API
-=======
->>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
+### Running with Dockerfile
 
-### Heroku Buildpacks
+You can set to container with [heroku stack](https://devcenter.heroku.com/articles/stack)
+without must a heroku buildpack, and you can deploy to heroku with [Dockerfile](https://www.docker.com) :)
 
-- heroku/nodejs (nodejs application)
-- https://github.com/jontewks/puppeteer-heroku-buildpack.git
+``` bash
+$ heroku stack:set container
+```
 
 # Usage for ssweb API
 
@@ -44,7 +43,7 @@ Response result on json
 
 if you want to use images response, you can add paramenter of `responsetype=image`
 
-`https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}`
+`https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}&responsetype=image`
 
 - Response result on image for desktop
 
