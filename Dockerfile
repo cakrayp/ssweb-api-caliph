@@ -24,7 +24,8 @@ WORKDIR /webapp
 COPY package.json /webapp
 RUN pwd
 RUN ls
-RUN npm install puppeteer \
+RUN npm install npm@latest && \
+    npm install puppeteer \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
@@ -37,8 +38,11 @@ RUN npm install puppeteer \
 
 # Puppeteer v13.5.0 works with Chromium 100.
 COPY . /webapp
+RUN node test.js
 # RUN yarn add puppeteer@13.5.0
 
 USER pptruser
+# Port
+EXPOSE 8050
 
-CMD [ "node", "server.js" ]
+CMD [ "npm", "start" ]
