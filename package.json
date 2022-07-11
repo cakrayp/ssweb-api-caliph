@@ -20,10 +20,7 @@
     "ssweb-api"
   ],
   "homepage": "https://ssapi.caliph.my.id",
-  "author": {
-    "name": "Caliph91",
-    "email": "admin@caliph.my.id"
-  },
+  "author": "Caliph91 <admin@caliph.my.id>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/caliph91/ssweb-api.git"
@@ -40,5 +37,7 @@
     "nodemon": "^2.0.15",
     "puppeteer": "^13.5.1",
     "stream": "^0.0.2"
-  }
+  },
+  "devDependencies": {},
+  "license": "ISC"
 }
