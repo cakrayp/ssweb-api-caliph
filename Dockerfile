@@ -21,6 +21,8 @@ RUN mkdir -p /app_backend /home/nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
 WORKDIR /webapp
+RUN pwd
+RUN ls
 COPY package.json /webapp/
 RUN npm i puppeteer \
     # Add user so we don't need --no-sandbox.
