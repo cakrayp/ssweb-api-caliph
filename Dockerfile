@@ -44,9 +44,9 @@ RUN npm i npm@latest && \
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
     && mkdir -p /home/pptruser/Downloads \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /node_modules \
-    && chown -R pptruser:pptruser /package.json \
-    && chown -R pptruser:pptruser /package-lock.json
+    && chown -R pptruser:pptruser /webapp/node_modules \
+    && chown -R pptruser:pptruser /webapp/package.json \
+    && chown -R pptruser:pptruser /webapp/package-lock.json
 
 COPY . /webapp
 RUN node test.js
