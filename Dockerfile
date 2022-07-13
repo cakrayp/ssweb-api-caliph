@@ -43,13 +43,14 @@ RUN chmod +x /usr/local/bin/dumb-init
 ENTRYPOINT ["dumb-init", "--"]
 
 # Install puppeteer so it's available in the container.
+RUN npm i npm@latest
 RUN npm init -y
-RUN npm i npm@latest && \
+RUN npm install \
     npm i puppeteer \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
+    # && addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && mkdir -p /home/pptruser/Downloads /webapp \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /webapp/node_modules \
