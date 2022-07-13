@@ -43,7 +43,7 @@ RUN chmod +x /usr/local/bin/dumb-init
 ENTRYPOINT ["dumb-init", "--"]
 
 # Install puppeteer so it's available in the container.
-RUN npm i npm@latest
+RUN npm i -g npm@latest
 RUN npm init -y
 RUN npm install \
     npm i puppeteer \
@@ -56,7 +56,7 @@ RUN npm install \
     && chown -R pptruser:pptruser /webapp/node_modules \
     && chown -R pptruser:pptruser /webapp/package.json \
     && chown -R pptruser:pptruser /webapp/package-lock.json \
-    && chown -R pptruser:pptruser /app
+    && chown -R pptruser:pptruser /webapp
 
 COPY . /webapp
 RUN node test.js
