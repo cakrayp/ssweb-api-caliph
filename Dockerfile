@@ -59,6 +59,7 @@ RUN npm install \
     && chown -R pptruser:pptruser /webapp
 
 COPY . /webapp
+RUN ls
 RUN node test.js
 USER pptruser
 
