@@ -35,9 +35,9 @@
     "form-data": "^3.0.1",
     "node-fetch": "^2.6.1",
     "nodemon": "^2.0.15",
+    "path": "^0.12.7",
     "puppeteer": "^13.5.1",
     "stream": "^0.0.2"
   },
-  "devDependencies": {},
   "license": "ISC"
 }

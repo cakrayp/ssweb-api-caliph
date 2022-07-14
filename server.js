@@ -51,6 +51,14 @@ app.get('/ssweb/desktop', async (req, res) => {
                                 result
                             })
                         })
+                        .catch(async (err) => {
+                            console.log(err)
+                            res.json({
+                                status: 406,
+                                creator: "Cakrayp & Caliph",
+                                message: "Bad request!"
+                            })
+                        })
                 }
             })
     } else {
@@ -85,6 +93,14 @@ app.get('/ssweb/handphone', async (req, res) => {
                         })
                 }
             })
+            .catch(async (err) => {
+                console.log(err)
+                res.json({
+                    status: 406,
+                    creator: "Cakrayp & Caliph",
+                    message: "Bad request!"
+                })
+            })
     } else {
         res.json({
             status: 202,
@@ -95,7 +111,7 @@ app.get('/ssweb/handphone', async (req, res) => {
 })
 
 
-app.use(async(req, res) => {
+app.use(async (req, res) => {
     res.send("<code>404 Not found</code>")
 })
 
