@@ -1,23 +1,13 @@
 {
     "name": "webscreen with puppeteer",
-    "description": "web screen for all devices with nodejs",
+    "description": "Web screenshot for all devices with nodejs",
     "repository": "https://github.com/cakrayp/ssweb-api-caliph",
-    "logo": "https://node-js-sample.herokuapp.com/node.png",
+    "logo": "https://telegra.ph/file/e294a9dec6818a7c689a9.png",
     "keywords": [
         "node",
         "express",
-        "puppeteer"
+        "puppeteer",
+        "google-chrome-stable"
     ],
-    "buildpacks": [
-        {
-            "url": "heroku/nodejs"
-        },
-        {
-            "url": "https://github.com/jontewks/puppeteer-heroku-buildpack"
-        }
-    ]
-<<<<<<< HEAD
+    "stack": "container"
 }
-=======
-}
->>>>>>> 8ff974ebb6e355abf59f41be739af725b4d8b8a7
