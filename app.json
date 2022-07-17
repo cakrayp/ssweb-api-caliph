@@ -1,6 +1,6 @@
 {
-    "name": "webscreen with puppeteer",
-    "description": "Web screenshot for all devices with nodejs",
+    "name": "Webscreenshot With Puppeteer",
+    "description": "Web screenshot for all website with nodejs & Dockerfile",
     "repository": "https://github.com/cakrayp/ssweb-api-caliph",
     "logo": "https://telegra.ph/file/e294a9dec6818a7c689a9.png",
     "keywords": [
