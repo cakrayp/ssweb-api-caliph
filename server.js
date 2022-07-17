@@ -22,6 +22,8 @@ const isUrl = (URL) => {
     return URL.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/, 'gi'))
 }
 
+
+app.use(express.static("public"))
 app.set("json spaces", 4)
 
 
