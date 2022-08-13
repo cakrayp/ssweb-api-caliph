@@ -4,33 +4,25 @@ FROM node:16.16.0-buster
 # setup chrome from ubuntu and configure.
 RUN apt-get update \
     && apt-get install -y wget gnupg \
-    yarn \
     && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
     && sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
     && apt-get update -y \ 
     && apt-get install -y google-chrome-stable fonts-ipafont-gothic fonts-wqy-zenhei fonts-thai-tlwg fonts-kacst fonts-freefont-ttf libxss1 \
-        --no-install-recommends
-
-RUN apt-get update && \
-    apt-get -y install xvfb gconf-service libasound2 libatk1.0-0 libc6 libcairo2 libcups2 \
-    libdbus-1-3 libexpat1 libfontconfig1 libgbm1 libgcc1 libgconf-2-4 libgdk-pixbuf2.0-0 libglib2.0-0 \
-    libgtk-3-0 libnspr4 libpango-1.0-0 libpangocairo-1.0-0 libstdc++6 libx11-6 libx11-xcb1 libxcb1 \
-    libxcomposite1 libxcursor1 libxdamage1 libxext6 libxfixes3 libxi6 libxrandr2 libxrender1 libxss1 \
-    libxtst6 ca-certificates fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils wget && \
-    rm -rf /var/lib/apt/lists/*
+        --no-install-recommends \
+    && rm -rf /var/lib/apt/lists/*
 
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true \
-    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true 
+    # PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
 
 # Running for nodejs Only
-RUN mkdir -p /webapp /home/nodejs && \
+RUN mkdir -p /api/webapp /home/nodejs && \
     groupadd -r nodejs && \
     useradd -r -g nodejs -d /home/nodejs -s /sbin/nologin nodejs && \
     chown -R nodejs:nodejs /home/nodejs
 
-WORKDIR /webapp
-COPY package.json /webapp
+WORKDIR /api/webapp
+COPY package.json /api/webapp
 RUN pwd
 RUN ls
 
@@ -46,20 +38,20 @@ ENTRYPOINT ["dumb-init", "--"]
 # Install puppeteer so it's available in the container.
 RUN npm i -g npm@latest
 RUN npm init -y
-RUN npm install \
+RUN npm install && \
     npm i puppeteer \
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
     # && addgroup -S pptruser && adduser -S -G pptruser pptruser \
     && groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads /webapp \
+    && mkdir -p /home/pptruser/Downloads /api/webapp \
     && chown -R pptruser:pptruser /home/pptruser \
-    && chown -R pptruser:pptruser /webapp/node_modules \
-    && chown -R pptruser:pptruser /webapp/package.json \
-    && chown -R pptruser:pptruser /webapp/package-lock.json \
-    && chown -R pptruser:pptruser /webapp
+    && chown -R pptruser:pptruser /api/webapp/node_modules \
+    && chown -R pptruser:pptruser /api/webapp/package.json \
+    && chown -R pptruser:pptruser /api/webapp/package-lock.json \
+    && chown -R pptruser:pptruser /api/webapp
 
-COPY . /webapp
+COPY . /api/webapp
 RUN ls
 RUN npm audit fix --force
 RUN node test.js
