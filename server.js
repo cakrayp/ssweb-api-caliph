@@ -69,7 +69,7 @@ app.get('/api/webscreen', async (req, res) => {
     if (!url) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: "Please enter URL for web screenshot" })
     if (!media_type) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: `Please select one of ${mediatype_avaiable.join(', ')} for web screenshot` })
     if (!mediatype_avaiable.includes(media_type)) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: `Mediatype is notavaiable, Please select one of ${mediatype_avaiable.join(', ')} for web screenshot` })
-    if (!filetype_avaiable.includes(filetype)) return res.status(415).json({ status: 415, creator: "Cakrayp & Caliph", message: "this type is not supported." })
+    if (filetype && !filetype_avaiable.includes(filetype)) return res.status(415).json({ status: 415, creator: "Cakrayp & Caliph", message: "this type is not supported." })
     if (isUrl(url) && /^http(?:s):\/\//.test(url)) {
         ssweb[media_type]({ url, fullpage: fullPage, filetype })
             .then(async (buff) => {
