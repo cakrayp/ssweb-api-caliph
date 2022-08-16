@@ -25,30 +25,43 @@ $ heroku stack:set container
 
 # Usage for ssweb API
 
-You can use paramenter of `desktop` And `handphone`
+You can see how to use web screenshot my rest API's in below.
 
-`https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}`
+| Params        | query | input | type | Description |
+| ------------- |:------|:------|:----:|:------------|
+| / | - | - | - | for see a info about my API's |
+| /api/webscreen | url | `https://example.com` | `string` | Enter the URL |
+| /api/webscreen | mediatype | `"desktop", "handphone"` | `string` | Web Screenshot with media type |
+| /api/webscreen | filetype | `"jpeg", "png", "webp"` | `string` | for select file type |
+| /api/webscreen | fullpage | `"true", "false"` | `boolean` | fullpage scroll, if you set to `true` |
+| /api/webscreen | responsetype | `"image"` | `string` | for image API response. |
+
+## Example
+
+`https://webscreenn.herokuapp.com/api/webscreen?url={URL}&mediatype={SCREEN_TYPE}`
 
 Response result on json
 
 ``` json
 {
     "status": 200,
+    "method": "GET",
     "creator": "Cakrayp & Caliph",
     "message": "You can add paramenter of 'responsetype=image' to image response",
     "result": {
-        "originalname": "e9f9f92dad.png",
-        "encoding": "7bit",
+        "server": "Cloudflare (file Uploader)",
+        "originalname": "BbeAnN8ctM05lKRA1ZKo.png",
+        "filetype": "png",
         "mimetype": "image/png",
-        "size": "72.15 KB",
-        "url": "https://uploader.caliph.my.id/file/zaku7M75ok.png"
+        "size": "355.3 KB",
+        "url": "http://uploader.caliph.my.id/file/BbeAnN8ctM05lKRA1ZKo.png"
     }
 }
 ```
 
 if you want to use images response, you can add paramenter of `responsetype=image`
 
-`https://webscreenn.herokuapp.com/ssweb/{SCREEN_TYPE}?url={URL}&responsetype=image`
+`https://webscreenn.herokuapp.com/api/webscreen?url={URL}&mediatype={SCREEN_TYPE}&responsetype=image`
 
 - Response result on image for desktop
 
@@ -60,6 +73,16 @@ if you want to use images response, you can add paramenter of `responsetype=imag
 
 <p align="center">
 <img src="https://telegra.ph/file/517b8219ca53433c73b40.png" width="auto" height="450"/>
+</p>
+
+## fullpage scroll
+
+You can use `fullpage=true` for page scroll
+
+`https://webscreenn.herokuapp.com/api/webscreen?url=https://youtube.com&mediatype=desktop&fullpage=true&filetype=png`
+
+<p align="center">
+<img src="https://telegra.ph/file/afaad018648402e277069.png" width="auto" height="450"/>
 </p>
 
 ## Creator
