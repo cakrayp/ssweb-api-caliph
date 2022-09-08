@@ -36,7 +36,7 @@ app.get('/', async (req, res) => {
     res.write(`-> Protocol: "${req.protocol}"\n`)
     res.write(`-> Your Domain: "${req.hostname}"\n`)
     res.write(`-> Path: "${req.path}"\n`)
-    res.write(`-> OriginalUrl: "${req.originalUrl}"\n\n`)
+    // res.write(`-> OriginalUrl: "${req.originalUrl}"\n\n`)
     res.write('=======================================================================\n\n')
     res.write('I was created server for web screenshot from source code\n')
     res.write('- Source code: "Caliphdev"\n')
@@ -67,9 +67,9 @@ app.get('/api/webscreen', async (req, res) => {
     const fullPage = typeof fullPage__ === 'boolean' ? fullPage__ : ToBoolean__[boolean__.indexOf(fullPage__)]
 
     if (!url) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: "Please enter URL for web screenshot" })
-    if (!media_type) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: `Please select one of ${mediatype_avaiable.join(', ')} for web screenshot` })
-    if (!mediatype_avaiable.includes(media_type)) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: `Mediatype is notavaiable, Please select one of ${mediatype_avaiable.join(', ')} for web screenshot` })
-    if (filetype && !filetype_avaiable.includes(filetype)) return res.status(415).json({ status: 415, creator: "Cakrayp & Caliph", message: "this type is not supported." })
+    if (!media_type) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: `Please select one of ${mediatype_avaiable.join(', ')} for web screenshot, or read in documentation` })
+    if (!mediatype_avaiable.includes(media_type)) return res.status(400).json({ status: 400, creator: "Cakrayp & Caliph", message: `Mediatype is notavaiable, Please select one of ${mediatype_avaiable.join(', ')} for web screenshot, or read in documentation` })
+    if (filetype && !filetype_avaiable.includes(filetype)) return res.status(415).json({ status: 415, creator: "Cakrayp & Caliph", message: "this type is not supported, or read in documentation" })
     if (isUrl(url) && /^http(?:s):\/\//.test(url)) {
         ssweb[media_type]({ url, fullpage: fullPage, filetype })
             .then(async (buff) => {
