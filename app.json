@@ -1,10 +1,10 @@
 {
-    "name": "Webscreenshot With Puppeteer",
-    "description": "Web screenshot for all website with nodejs & Dockerfile",
+    "name": "Website Screenshot With NodeJs",
+    "description": "Web screenshot for all website with nodejs & Use container stack to deploy with Dockerfile.",
     "repository": "https://github.com/cakrayp/ssweb-api-caliph",
     "logo": "https://telegra.ph/file/e294a9dec6818a7c689a9.png",
     "keywords": [
-        "node",
+        "nodejs",
         "express",
         "puppeteer",
         "google-chrome-stable"
