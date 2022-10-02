@@ -42,11 +42,6 @@ app.get('/', async (req, res) => {
 
 
 app.get('/api/webscreen', async (req, res) => {
-    const my_URL = `${req.protocol}://${req.hostname}${req.originalUrl==='/'?'':req.originalUrl}`;
-    if (decodeURIComponent(decodeURI(req.query.url)) === my_URL) {
-        return res.setHeader('Content-type', 'text/plain').status(500).send('This URL is same as my API, because it could not web screenshot with my URL, execpt my domain')
-    }
-
     var url = decodeURIComponent(decodeURI(req.query.url)),
         media_type = req.query.mediatype,
         filetype = req.query.filetype,
