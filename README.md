@@ -31,37 +31,72 @@ You can see how to use web screenshot my rest API's in below.
 | ------------- |:------|:------|:----:|:------------|
 | / | - | - | - | for see a info about my API's |
 | /api/webscreen | url | `https://example.com` | `string` | Enter the URL |
-| /api/webscreen | mediatype | `"desktop", "handphone"` | `string` | Web Screenshot with media type |
-| /api/webscreen | filetype | `"jpeg", "png", "webp"` | `string` | for select file type |
+| /api/webscreen | mediatype | `"desktop", "handphone"` | `string` | Web Screenshot with media type (screen size) |
+| /api/webscreen | filetype | `"jpeg", "png", "webp"` | `string` | for select file formats |
 | /api/webscreen | fullpage | `"true", "false"` | `boolean` | fullpage scroll, if you set to `true` |
-| /api/webscreen | responsetype | `"image"` | `string` | for image API response. |
+| /api/webscreen | responsetype | `"json", "xml", "image"` | `string` | for API format response. |
 
 ## Example
 
-`https://webscreenn.herokuapp.com/api/webscreen?url={URL}&mediatype={SCREEN_TYPE}`
+URL Details:
+`https://webscreenn.herokuapp.com/api/webscreen?url={ENTER_URL}&mediatype={SCREEN_TYPE}&filetype={FILE_FORMAT}&fullpage={BOOLEAN}&responsetype={RESPONSE_FORMAT}`
 
-Response result on json
+### Response result on json
 
 ``` json
 {
     "status": 200,
     "method": "GET",
+    "success": true,
     "creator": "Cakrayp & Caliph",
     "message": "You can add paramenter of 'responsetype=image' to image response",
     "result": {
         "server": "Cloudflare (file Uploader)",
-        "originalname": "BbeAnN8ctM05lKRA1ZKo.png",
+        "originalname": "bb974b3f77.png",
+        "encoding": "7bit",
         "filetype": "png",
         "mimetype": "image/png",
-        "size": "355.3 KB",
-        "url": "http://uploader.caliph.my.id/file/BbeAnN8ctM05lKRA1ZKo.png"
+        "size": "39.55 KB",
+        "link": {
+            "previewWeb": "https://uploader.caliph.my.id/dl/t7y2i",
+            "file": "https://filezone.cf/file/nege2n5aj5jw2feydhfj.png"
+        }
     }
 }
 ```
 
+### Response result on xml
+
+``` xml
+<root>
+    <status>200</status>
+    <method>GET</method>
+    <success>true</success>
+    <creator>Cakrayp & Caliph</creator>
+    <message>You can add paramenter of 'responsetype=image' to image response</message>
+    <result>
+        <server>Litespeed (file Uploader)</server>
+        <originalname>012173b56e.png</originalname>
+        <encoding>7bit</encoding>
+        <filetype>png</filetype>
+        <mimetype>image/png</mimetype>
+        <size>52.07 KB</size>
+        <link>
+            <previewWeb>https://uploader.caliph.my.id/dl/rknje</previewWeb>
+            <file>https://uploader.caliph.my.id/file/ijcppzqzgt9yg3pidowh.png</file>
+        </link>
+    </result>
+</root>
+```
+<p align="center">
+<img src="https://telegra.ph/file/c712e215dfe50bfab4965.png" width="auto" height="350"/>
+</p>
+
+### Response result on image(s)
+
 if you want to use images response, you can add paramenter of `responsetype=image`
 
-`https://webscreenn.herokuapp.com/api/webscreen?url={URL}&mediatype={SCREEN_TYPE}&responsetype=image`
+`https://webscreenn.herokuapp.com/api/webscreen?url={ENTER_URL}&mediatype={TYPE_MEDIA}&responsetype=image`
 
 - Response result on image for desktop
 
