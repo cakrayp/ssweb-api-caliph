@@ -46,7 +46,7 @@ app.get('/api/webscreen', async (req, res) => {
         media_type = req.query.mediatype,
         filetype = req.query.filetype,
         fullPage__ = req.query.fullpage,
-        responsetype = req.query.responsetype?.toLowerCase()
+        responsetype = req.query.responsetype?.toString().toLowerCase()
 
     const mediatype_avaiable = ['desktop', 'handphone'];
     const filetype_avaiable = ['jpeg', 'jpg', 'png', 'webp'];
