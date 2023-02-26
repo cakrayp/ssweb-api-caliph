@@ -6,7 +6,8 @@
 <img src="https://telegra.ph/file/651de97f3fd7d374cf6d4.png" width="auto" height="350"/>
 </p>
 
-# Heroku Deployments
+## App Deployments one Click
+[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/zA58hj?referralCode=XDFlpf)
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cakrayp/ssweb-api-caliph)
 
 ### Heroku Buildpacks
@@ -16,8 +17,12 @@
 
 ### Running with Dockerfile
 
-You can set to container with [heroku stack](https://devcenter.heroku.com/articles/stack)
-without must a heroku buildpack, and you can deploy to heroku with [Dockerfile](https://www.docker.com) :)
+Railway is now supported for heroku.
+You can deploy with [Railway.app](https://railway.app) and you do not anything to do.
+
+If you are [Heroku](https://Heroku.com) users, you can set to container with [heroku stack](https://devcenter.heroku.com/articles/stack)
+for running a container for [Dockerfile](https://www.docker.com)
+without must a heroku buildpack, and you can deploy to heroku with [Dockerfile](https://www.docker.com) as the command below👇 :)
 
 ``` bash
 $ heroku stack:set container
@@ -122,5 +127,5 @@ You can use `fullpage=true` for page scroll
 
 ## Creator
 
-- Sourde code [Caliph](https://github.com/Caliph91)
+- Sourde code [Caliphdev](https://github.com/caliphdev)
 - Credit by [Cakrayp (Me)](https://github.com/cakrayp)
