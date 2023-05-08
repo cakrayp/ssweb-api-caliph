@@ -4,6 +4,14 @@ let assert = require('assert')
 let { spawn } = require('child_process')
 let folders = ['.', ...Object.keys(require('./package.json').directories)]
 let files = []
+console.log('framework', {
+  version: process.version,
+  platform: process.platform,
+  arch: process.arch,
+  release: process.release,
+  execPath: process.execPath
+});
+console.log('Starting with command', `"${process.argv0}" (${process.version})`)
 for (let folder of folders)
   for (let file of fs.readdirSync(folder).filter(v => v.endsWith('.js')))
     files.push(path.resolve(path.join(folder, file)))
