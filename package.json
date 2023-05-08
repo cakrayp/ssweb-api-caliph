@@ -40,6 +40,7 @@
     "path": "^0.12.7",
     "puppeteer": "^13.5.1",
     "stream": "^0.0.2",
+    "user-agents": "^1.0.1372",
     "xml2js": "^0.4.23"
   },
   "license": "ISC"
