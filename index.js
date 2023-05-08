@@ -1,13 +1,11 @@
-const handphone = require("./lib/sshp");
-const desktop = require("./lib/ssweb");
+const browserPuppeteer = require("./lib/puppeteerController");
 let author = require("./package.json").author || {};
 const type = {
-    handphone,
-    desktop
+    browserPuppeteer
 };
 author = author || {
     name: 'Caliph Dev.',
     email: 'admin@caliph.my.id'
 };
 
-module.exports = { author, ...type }
+module.exports = { author, ...type };
