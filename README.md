@@ -34,17 +34,18 @@ You can see how to use web screenshot my rest API's in below.
 
 | Params        | query | input | type | Description |
 | ------------- |:------|:------|:----:|:------------|
-| / | - | - | - | for see a info about my API's |
+| / | - | - | - | for see a documentation and info about my API's |
 | /api/webscreen | url | `https://example.com` | `string` | Enter the URL |
-| /api/webscreen | mediatype | `"desktop", "handphone"` | `string` | Web Screenshot with media type (screen size) |
-| /api/webscreen | filetype | `"jpeg", "png", "webp"` | `string` | for select file formats |
+| /api/webscreen | mediatype | `"desktop", "handphone", "custom"` | `string` | Web Screenshot with media type (screen size) |
+| /api/webscreen | filetype | `"jpeg", "png", "webp"` | `string` | to select file formats |
 | /api/webscreen | fullpage | `"true", "false"` | `boolean` | fullpage scroll, if you set to `true` |
-| /api/webscreen | responsetype | `"json", "xml", "image"` | `string` | for API format response. |
+| /api/webscreen | viewport | `"1920x1080"` | `string` | Using the viewport to scale the screen, if you using the paramenter of mediatype is `custom` |
+| /api/webscreen | responsetype | `"json", "xml", "image"` | `string` | to API format response. |
 
 ## Example
 
 URL Details:
-`https://webscreenn.herokuapp.com/api/webscreen?url={ENTER_URL}&mediatype={SCREEN_TYPE}&filetype={FILE_FORMAT}&fullpage={BOOLEAN}&responsetype={RESPONSE_FORMAT}`
+`https://webscreenn.herokuapp.com/api/webscreen?url={ENTER_URL}&mediatype={SCREEN_TYPE}&filetype={FILE_FORMAT}viewport={SCREEN_SIZE}&fullpage={BOOLEAN}&responsetype={RESPONSE_FORMAT}`
 
 ### Response result on json
 
@@ -56,15 +57,20 @@ URL Details:
     "creator": "Cakrayp & Caliph",
     "message": "You can add paramenter of 'responsetype=image' to image response",
     "result": {
-        "server": "Cloudflare (file Uploader)",
-        "originalname": "bb974b3f77.png",
-        "encoding": "7bit",
-        "filetype": "png",
-        "mimetype": "image/png",
-        "size": "39.55 KB",
-        "link": {
-            "previewWeb": "https://uploader.caliph.my.id/dl/t7y2i",
-            "file": "https://filezone.cf/file/nege2n5aj5jw2feydhfj.png"
+        "title": "GitHub - caliphdev/caliph-api: Simple Package caliph-api for javascript",
+        "description": "Simple Package caliph-api for javascript. Contribute to caliphdev/caliph-api development by creating an account on GitHub.",
+        "origin_url": "https://github.com/caliphdev/caliph-api",
+        "viewport": {
+            "width": 1920,
+            "height": 1080
+        },
+        "files": {
+            "server": "Nginx (file Uploader)",
+            "hash": "4566958dd672eab02bc639a40bc1e06f0eeaf882",
+            "originalname": "IMG-129779AD0342BA1E.jpg",
+            "filetype": "jpg",
+            "size": "129.3 KB",
+            "file_url": "https://a.uguu.se/ecoAzWEj.jpg"
         }
     }
 }
@@ -80,21 +86,27 @@ URL Details:
     <creator>Cakrayp & Caliph</creator>
     <message>You can add paramenter of 'responsetype=image' to image response</message>
     <result>
-        <server>Litespeed (file Uploader)</server>
-        <originalname>012173b56e.png</originalname>
-        <encoding>7bit</encoding>
-        <filetype>png</filetype>
-        <mimetype>image/png</mimetype>
-        <size>52.07 KB</size>
-        <link>
-            <previewWeb>https://uploader.caliph.my.id/dl/rknje</previewWeb>
-            <file>https://uploader.caliph.my.id/file/ijcppzqzgt9yg3pidowh.png</file>
-        </link>
+        <title>GitHub - caliphdev/caliph-api: Simple Package caliph-api for javascript</title>
+        <description>Simple Package caliph-api for javascript. Contribute to caliphdev/caliph-api development by creating an account on GitHub.</description>
+        <origin_url>https://github.com/caliphdev/caliph-api</origin_url>
+        <viewport>
+            <width>1920</width>
+            <height>1080</height>
+        </viewport>
+        <files>
+            <server>Nginx (file Uploader)</server>
+            <hash>539fa8fc4dfa7f18eaba6511bb2d8eeac1ad7fcd</hash>
+            <originalname>IMG-6EC83B9F1E6C6DFC.jpg</originalname>
+            <filetype>jpg</filetype>
+            <mimetype/>
+            <size>130.6 KB</size>
+            <file_url>https://a.uguu.se/XeeqLwqu.jpg</file_url>
+        </files>
     </result>
 </root>
 ```
 <p align="center">
-<img src="https://telegra.ph/file/c712e215dfe50bfab4965.png" width="auto" height="350"/>
+<img src="https://telegra.ph/file/406d00a75b50aa3eb5cc1.png" width="auto" height="350"/>
 </p>
 
 ### Response result on image(s)
@@ -113,6 +125,12 @@ if you want to use images response, you can add paramenter of `responsetype=imag
 
 <p align="center">
 <img src="https://telegra.ph/file/517b8219ca53433c73b40.png" width="auto" height="450"/>
+</p>
+
+- Response result on image for Custom, But it use a paramenter of viewport (screen size) E.g: `viewport=1920x720`
+
+<p align="center">
+<img src="https://telegra.ph/file/e6f24b63bbffa42c99a64.png" width="auto" height="450"/>
 </p>
 
 ## fullpage scroll
