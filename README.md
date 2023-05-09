@@ -147,3 +147,12 @@ You can use `fullpage=true` for page scroll
 
 - Sourde code [Caliphdev](https://github.com/caliphdev)
 - Credit by [Cakrayp (Me)](https://github.com/cakrayp)
+
+## Contact
+
+If you want to report bug or chat owner, please contact me in below.
+
+<a href="https://www.instagram.com/cakrayp_jhn"><img src="https://img.shields.io/badge/-instagram-E4405F?style=for-the-badge&logo=youtube&logoColor=white">
+<br>
+<a href="https://wa.me/6285161422971"><img alt="WhatsApp" src="https://img.shields.io/badge/-Whatsapp-success?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
+<br>
