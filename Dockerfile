@@ -19,8 +19,8 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # NodeJS Installer the latest version.
 # Recode By "https://github.com/MyDapitt/ssweb-api-caliph"
 # Terima kasih sudah memberikan saran codemu dari repository saya :)
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
-apt-get install -y nodejs
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
+    apt-get install nodejs -y
 
 # See the process from nodejs
 RUN node -e "console.log('Process',JSON.stringify(process,null,4))"
