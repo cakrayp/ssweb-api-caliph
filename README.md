@@ -39,7 +39,7 @@ You can see how to use web screenshot my rest API's in below.
 | /api/webscreen | mediatype | `"desktop", "handphone", "custom"` | `string` | Web Screenshot with media type (screen size) |
 | /api/webscreen | filetype | `"jpeg", "png", "webp"` | `string` | to select file formats |
 | /api/webscreen | fullpage | `"true", "false"` | `boolean` | fullpage scroll, if you set to `true` |
-| /api/webscreen | viewport | `"1920x1080"` | `string` | Using the viewport to scale the screen, if you using the paramenter of mediatype is `custom` |
+| /api/webscreen | viewport | `"1920x1080"(<width>x<height>)` | `string` | Using the viewport to scale the screen, if you using the paramenter of mediatype is `custom` |
 | /api/webscreen | responsetype | `"json", "xml", "image"` | `string` | to API format response. |
 
 ## Example
@@ -150,9 +150,9 @@ You can use `fullpage=true` for page scroll
 
 ## Contact
 
-If you want to report bug or chat owner, please contact me in below.
+If you want to report bug or chat owner, please create in [issues](https://github.com/cakrayp/ssweb-api-caliph/issues) on this repository, or contact me in below.
 
-<a href="https://www.instagram.com/cakrayp_jhn"><img src="https://img.shields.io/badge/-instagram-E4405F?style=for-the-badge&logo=youtube&logoColor=white">
+<a href="https://www.instagram.com/cakrayp_jhn"><img src="https://img.shields.io/badge/-instagram-magenta?style=for-the-badge&logo=instagram&logoColor=white">
 <br>
 <a href="https://wa.me/6285161422971"><img alt="WhatsApp" src="https://img.shields.io/badge/-Whatsapp-success?style=for-the-badge&logo=whatsapp&logoColor=white"/></a>
 <br>
