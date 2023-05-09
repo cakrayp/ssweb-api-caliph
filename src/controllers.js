@@ -1,5 +1,7 @@
 const stream = require('stream');
 const xml2js = require('xml2js');
+const { fromBuffer } = require("file-type");
+const crypt = require('crypto');
 const uploadFileWithUguu = require('../lib/uploadFile');
 const {browserPuppeteer} = require('../index');
 const creator = "Cakrayp & Caliph";
@@ -51,12 +53,12 @@ exports.webScreenschot = async(req, res) => {
     const viewport_screen = {
         desktop: { width: 1920, height: 1080 },
         handphone: { width: 720, height: 1080 },
-        custom: { width: viewport_sizes?.[0] ?? null, height: viewport_sizes?.[1] ?? null }
+        custom: { width: viewport_sizes?.[0] ?? NaN, height: viewport_sizes?.[1] ?? NaN }
     };
 
     if (!url) return res.status(400).json({ status: 400, method: "GET", success: false, creator, message: "Please enter URL for web screenshot" });
     if (!media_type) return res.status(400).json({
-        status: 400, method: "GET", success: false, creator, message: `Please select one of ${mediatype_avaiable.join(', ')} for web screenshot, or read in documentation`
+        status: 400, method: "GET", success: false, creator, message: `Please select one of ${Object.keys(viewport_screen).join(', ')} for web screenshot, or read in documentation`
     });
     if (!responsetype) return res.status(400).json({
         status: 400, method: "GET", success: false, creator, message: "responsetype is require, please select one of json, xml, and image, or read in documentation"
@@ -97,9 +99,13 @@ exports.webScreenschot = async(req, res) => {
         browserPuppeteer.screenshot(puppeteerConfig)
             .then(async ({ title, description, viewport, url, screenshot: buff }) => {
                 if (/^image(s|)$/.test(responsetype)) {
-                    createStream(buff).pipe(res);
+                    let { ext, mime } = await fromBuffer(buff);
+                    let filename = `IMG-${crypt.randomBytes(15).toString('hex').toUpperCase()}.${ext}`;
+                    res.setHeader("Content-Type", mime);                            // MimeType.
+                    res.setHeader('Content-disposition', `filename=${filename}`);   // filename.
+                    createStream(buff).pipe(res);                                   // Stream file (download file with stream)
                 } else if (responsetype === 'xml') {
-                    res.header('Content-Type', 'application/xml')
+                    res.header('Content-Type', 'application/xml');
                     const builder = new xml2js.Builder();
                     uploadFileWithUguu(buff)
                         .then(files => {
