@@ -19,7 +19,9 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # NodeJS Installer the latest version.
 # Recode By "https://github.com/MyDapitt/ssweb-api-caliph"
 # Terima kasih sudah memberikan saran codemu dari repository saya :)
-RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
+# LTS       :   https://deb.nodesource.com/setup_lts.x
+# Current   :   https://deb.nodesource.com/setup_current.x
+RUN curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - && \
     apt-get install nodejs -y
 
 # See the process from nodejs
@@ -34,7 +36,7 @@ RUN mkdir -p /api/webapp /home/nodejs && \
 
 WORKDIR /api/webapp
 COPY package.json /api/webapp
-RUN pwd && ls
+RUN echo -e "-> files:\n$(ls)\n\n-> Folder: $(pwd)"
 
 # Puppeteer v13.5.0 works with Chromium 100.
 # RUN yarn add puppeteer@13.5.0
@@ -61,7 +63,7 @@ RUN npm install && \
     && chown -R pptruser:pptruser /api/webapp
 
 COPY . /api/webapp
-RUN ls
+RUN echo -e "-> files:\n$(ls)\n\n-> Folder: $(pwd)"
 RUN npm audit fix --force
 RUN node test.js
 USER pptruser
