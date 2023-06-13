@@ -21,7 +21,7 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 # Terima kasih sudah memberikan saran codemu dari repository saya :)
 # LTS       :   https://deb.nodesource.com/setup_lts.x
 # Current   :   https://deb.nodesource.com/setup_current.x
-RUN curl -fsSL https://deb.nodesource.com/setup_current.x | sudo -E bash - && \
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && \
     apt-get install nodejs -y
 
 # See the process from nodejs
