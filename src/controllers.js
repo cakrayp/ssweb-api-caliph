@@ -2,7 +2,7 @@ const stream = require('stream');
 const xml2js = require('xml2js');
 const { fromBuffer } = require("file-type");
 const crypt = require('crypto');
-const uploadFileWithUguu = require('../lib/uploadFile');
+const uploadFiles = require('../lib/uploadFile');
 const {browserPuppeteer} = require('../index');
 const creator = "Cakrayp & Caliph";
 
@@ -107,7 +107,7 @@ exports.webScreenschot = async(req, res) => {
                 } else if (responsetype === 'xml') {
                     res.header('Content-Type', 'application/xml');
                     const builder = new xml2js.Builder();
-                    uploadFileWithUguu(buff)
+                    uploadFiles(buff)
                         .then(files => {
                             res.status(200).send(builder.buildObject({
                                 status: 200,
@@ -137,7 +137,7 @@ exports.webScreenschot = async(req, res) => {
                             }));
                         });
                 } else if (responsetype === 'json') {
-                    uploadFileWithUguu(buff)
+                    uploadFiles(buff)
                         .then(files => {
                             res.status(200).json({
                                 status: 200,
